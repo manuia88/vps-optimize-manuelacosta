@@ -1,0 +1,68 @@
+SNAPSHOT ANTES DE OPTIMIZAR
+Servidor: bc-vps-616
+
+==================================================
+1. SISTEMA OPERATIVO
+Comando: cat /etc/os-release
+==================================================
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+UBUNTU_CODENAME=jammy
+
+Resumen: Ubuntu 22.04.5 LTS (Jammy Jellyfish)
+
+==================================================
+2. MEMORIA RAM
+Comando: free -h
+==================================================
+               total        used        free      shared  buff/cache   available
+Mem:           957Mi       185Mi       157Mi       4.0Mi       614Mi       598Mi
+Swap:             0B          0B          0B
+
+Resumen: total 957Mi | usada 185Mi | libre 157Mi | disponible 598Mi
+
+==================================================
+3. DISCO
+Comando: df -h
+==================================================
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs            96M  1.1M   95M   2% /run
+/dev/vda1        25G  2.6G   22G  11% /
+tmpfs           479M     0  479M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/vda15      105M  6.1M   99M   6% /boot/efi
+tmpfs            96M  4.0K   96M   1% /run/user/0
+
+Resumen (fila /): total 25G | usado 2.6G | disponible 22G | uso 11%
+
+==================================================
+4. SERVICIOS EN EJECUCION
+Comando: systemctl list-units --type=service --state=running
+==================================================
+cron.service
+dbus.service
+droplet-agent.service
+getty@tty1.service
+multipathd.service
+networkd-dispatcher.service
+packagekit.service
+polkit.service
+rsyslog.service
+serial-getty@ttyS0.service
+snapd.service
+ssh.service
+systemd-journald.service
+systemd-logind.service
+systemd-networkd.service
+systemd-resolved.service
+systemd-timesyncd.service
+systemd-udevd.service
+unattended-upgrades.service
+user@0.service
+
+Total: 20 servicios corriendo

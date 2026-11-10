@@ -1,0 +1,52 @@
+INFORME AL CTO: VPS LISTO PARA DESPLIEGUES
+Servidor: bc-vps-616
+
+El VPS esta listo para los despliegues de la compania.
+Recursos disponibles tras optimizar: 957Mi de RAM total (673Mi disponibles)
+y 25G de disco (22G libres).
+
+==================================================
+1. SISTEMA OPERATIVO
+Comando: cat /etc/os-release
+==================================================
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+UBUNTU_CODENAME=jammy
+
+==================================================
+2. MEMORIA RAM (despues de optimizar)
+Comando: free -h
+==================================================
+               total        used        free      shared  buff/cache   available
+Mem:           957Mi       141Mi       523Mi       3.0Mi       291Mi       673Mi
+Swap:             0B          0B          0B
+
+Antes: 598Mi disponibles | Despues: 673Mi disponibles
+
+==================================================
+3. DISCO (despues de optimizar)
+Comando: df -h
+==================================================
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs            96M  992K   95M   2% /run
+/dev/vda1        25G  2.6G   22G  11% /
+tmpfs           479M     0  479M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/vda15      105M  6.1M   99M   6% /boot/efi
+tmpfs            96M  4.0K   96M   1% /run/user/0
+
+==================================================
+4. CAMBIOS APLICADOS (segun la leccion del curso)
+==================================================
+- apport: desactivado y detenido.
+- multipathd: desactivado y detenido.
+- snapd (servicio y socket): desactivados. Tras reiniciar, snapd.seeded.service
+  lo vuelve a activar bajo demanda (aprox. 20 MB); se dejo asi.
+- cups, avahi-daemon, modemmanager, bluetooth y popularity-contest: no estan
+  instalados en este VPS, no hubo nada que desactivar.
+- SSH verificado con una conexion nueva y tras reiniciar el servidor.
