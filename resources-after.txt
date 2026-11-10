@@ -50,3 +50,40 @@ tmpfs            96M  4.0K   96M   1% /run/user/0
 - cups, avahi-daemon, modemmanager, bluetooth y popularity-contest: no estan
   instalados en este VPS, no hubo nada que desactivar.
 - SSH verificado con una conexion nueva y tras reiniciar el servidor.
+
+==================================================
+5. EVIDENCIA DE SESION REMOTA (SSH)
+==================================================
+Acceso desde mi terminal con: ssh root@<IP del VPS>
+
+root@bc-vps-616:~# hostname
+bc-vps-616
+root@bc-vps-616:~# whoami
+root
+
+Tras reiniciar el servidor (reboot) y reconectar por SSH:
+
+root@bc-vps-616:~# uptime
+ 19:36:07 up 0 min,  1 user,  load average: 0.68, 0.24, 0.09
+root@bc-vps-616:~# systemctl is-active cups avahi-daemon modemmanager bluetooth apport snapd multipathd
+inactive
+inactive
+inactive
+inactive
+inactive
+active
+inactive
+
+(El unico "active" es snapd, activado por snapd.socket a traves de
+snapd.seeded.service, como se explica en la seccion 4.)
+
+==================================================
+6. COMANDOS USADOS PARA DESACTIVAR SERVICIOS
+==================================================
+systemctl disable --now cups avahi-daemon modemmanager bluetooth apport popularity-contest
+  (cups no existe y el comando se detuvo en ese error; apport si quedo desactivado)
+systemctl disable --now snapd.service snapd.socket
+systemctl disable --now multipathd.service
+systemctl disable --now apport
+systemctl stop apport
+reboot
